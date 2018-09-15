@@ -10,6 +10,9 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(Mint)
 
+import Filters from './filters'
+Vue.filter('distince', Filters.distince)
+
 new Vue({
   router,
   store,

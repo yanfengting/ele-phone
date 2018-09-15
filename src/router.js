@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Find from './views/Find.vue'
 import Order from './views/Order.vue'
 import Mine from './views/Mine.vue'
+import SelectAddress from './views/SelectAddress.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/mine',
       name: 'mine',
       component: Mine
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: SelectAddress
     }
   ]
 })

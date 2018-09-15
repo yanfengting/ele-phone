@@ -1,5 +1,4 @@
 <template>
-
   <mt-tabbar v-model="selected" fixed>
     <mt-tab-item id="home">
       <img slot="icon" :src="icons.home">首页
@@ -14,12 +13,10 @@
       <img slot="icon" :src="icons.mine">我的
     </mt-tab-item>
   </mt-tabbar>
-
 </template>
 
 <script>
 import { Tabbar, TabItem } from "mint-ui";
-
 export default {
   name: "Footer",
   data() {
@@ -34,17 +31,22 @@ export default {
     };
   },
   watch: {
-    selected(newValue, oldValue){
+    selected(newValue, oldValue) {
       this.icons[oldValue] = require(`../assets/footer/${oldValue}.svg`);
-      this.icons[newValue] = require(`../assets/footer/${newValue}-selected.svg`);
-      this.$router.push(newValue)
+      this.icons[
+        newValue
+      ] = require(`../assets/footer/${newValue}-selected.svg`);
+      this.$router.push({name: newValue});
     }
-  },
+  }
 };
 </script>
 
 <style scoped>
-
+.mint-tabbar,
+.mint-tab-item {
+  background-color: #fff !important;
+}
 </style>
 
 
