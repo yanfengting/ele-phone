@@ -30,13 +30,17 @@ export default {
       }
     };
   },
+  mounted(){
+    this.selected = localStorage.getItem('selected') || "home";
+  },
   watch: {
     selected(newValue, oldValue) {
       this.icons[oldValue] = require(`../assets/footer/${oldValue}.svg`);
       this.icons[
         newValue
       ] = require(`../assets/footer/${newValue}-selected.svg`);
-      this.$router.push({name: newValue});
+      localStorage.setItem('selected', newValue);
+      this.$router.push({ name: newValue });
     }
   }
 };

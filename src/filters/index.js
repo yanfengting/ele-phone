@@ -1,6 +1,6 @@
 function distince(value) {
     if (typeof value === 'number') {
-        return value + 'km'
+        return (value / 1000).toFixed(2) + 'km'
     }
 }
 
