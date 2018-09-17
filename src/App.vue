@@ -27,11 +27,11 @@ export default {
       gl.getCurrentPosition(function(r) {
         if (this.getStatus() == BMAP_STATUS_SUCCESS) {
           // console.log("您的位置：" + r.point.lng + "," + r.point.lat);
-          vm.setLocation({ lng: r.point.lng, lat: r.point.lat });
+          vm[SET_LOCATION]({ lng: r.point.lng, lat: r.point.lat });
           var myCity = new BMap.LocalCity();
           myCity.get(function(r) {
             // console.log("当前定位城市:" + r.name);
-            vm.setCity(r.name);
+            vm[SET_CITY](r.name);
           });
         } else {
           console.error("failed" + gl.getStatus());

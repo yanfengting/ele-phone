@@ -24,7 +24,6 @@
 <script>
 import { Header, Cell } from "mint-ui";
 import Address from "../components/Address.vue";
-import BMap from "BMap";
 import { mapState } from "vuex";
 export default {
   name: "SelectAddress",
@@ -53,7 +52,6 @@ export default {
             });
           }
           vm.citys = s;
-          console.log(vm.citys);
         }
       }
     });
