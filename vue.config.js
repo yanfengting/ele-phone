@@ -4,7 +4,8 @@ module.exports = {
     configureWebpack: {
         externals: {
             "BMap": "BMap",
-            "jQuery": 'jQuery'
+            "jQuery": 'jQuery',
+            "$": 'jQuery'
         }
     },
     devServer: {

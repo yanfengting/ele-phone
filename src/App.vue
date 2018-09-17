@@ -8,37 +8,28 @@
 <script>
 import Footer from "./components/Footer.vue";
 import { mapMutations } from "vuex";
-import { SET_LOCATION, SET_CITY } from "./stores/modules/base/mution-types";
+import { SET_LOCATION, SET_LOCATION_DETAIL } from "./stores/modules/base/mution-types";
 export default {
   name: "App",
   components: {
     Footer
   },
   created() {
-    this.geolocation();
+    this.geoLocation();
     this.timer = setInterval(() => {
-      this.geolocation();
-    }, 1000 * 60 * 30);
+      this.geoLocation();
+    }, 1000 * 60 * 5);
   },
   methods: {
-    geolocation() {
-      var vm = this;
-      var gl = new BMap.Geolocation();
-      gl.getCurrentPosition(function(r) {
-        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-          // console.log("您的位置：" + r.point.lng + "," + r.point.lat);
-          vm[SET_LOCATION]({ lng: r.point.lng, lat: r.point.lat });
-          var myCity = new BMap.LocalCity();
-          myCity.get(function(r) {
-            // console.log("当前定位城市:" + r.name);
-            vm[SET_CITY](r.name);
-          });
-        } else {
-          console.error("failed" + gl.getStatus());
-        }
+    ...mapMutations([SET_LOCATION, SET_LOCATION_DETAIL]),
+    geoLocation() {
+      $.get("/api/restapi/shopping/v1/cities/guess").done(res => {
+        this[SET_LOCATION](res);
+        $.get(`/api/restapi/bgs/poi/reverse_geo_coding?latitude=${res.latitude}&longitude=${res.longitude}`).done((res)=>{
+          this[SET_LOCATION_DETAIL](res);
+        })
       });
-    },
-    ...mapMutations([SET_LOCATION, SET_CITY])
+    }
   },
   beforeDestroy() {
     clearInterval(this.timer);

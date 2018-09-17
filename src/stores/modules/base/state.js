@@ -1,5 +1,4 @@
 export default {
-    city: "",
-    lng: 0,
-    lat: 0
+    location: JSON.parse(localStorage.getItem('location')) || null,
+    locationDetail: JSON.parse(localStorage.getItem('locationDetail')) || null,
 }

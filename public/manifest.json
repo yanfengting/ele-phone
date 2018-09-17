@@ -4,36 +4,10 @@
   "description": "饿了么是中国专业的网上订餐平台，目前已覆盖北京、上海、杭州、广州等300多个城市，提供各类中式、日式、韩式、西式、下午茶、夜宵等优质美食，并提供送餐上门服务，让订餐更加轻松，叫外卖就上饿了么！",
   "lang": "cn",
   "icons": [{
-      "src": "/img/icons/logo-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/img/icons/logo-144x144.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
-    {
-      "src": "/img/icons/logo-96x96.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "/img/icons/logo-72x72.png",
-      "type": "image/png",
-      "sizes": "72x72"
-    },
-    {
-      "src": "/img/icons/logo-48x48.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "/img/icons/logo-32x32.png",
-      "type": "image/png",
-      "sizes": "36x36"
-    }
-  ],
+    "src": "/img/icons/logo-32x32.png",
+    "type": "image/png",
+    "sizes": "32x32"
+  }],
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#000000",

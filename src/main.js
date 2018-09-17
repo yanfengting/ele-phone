@@ -11,7 +11,7 @@ import 'mint-ui/lib/style.css'
 Vue.use(Mint)
 
 import Filters from './filters'
-Vue.filter('distince', Filters.distince)
+Vue.filter('distance', Filters.distance)
 
 new Vue({
   router,

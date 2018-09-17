@@ -5,18 +5,16 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <Address :city="city" :result.sync="citys" class="address">
-      <router-link :to="{name:'home', params: {address: item.title}}" v-for="(item,index) in citys" :key="index">
-        <div class="city-item">
-          <div class="info">
-            <p class="name">{{item.title}}</p>
-            <p class="city">{{item.address}}</p>
-          </div>
-          <div class="distince">
-            {{item.distince | distince}}
-          </div>
+    <Address :city="location.name" :result.sync="citys" @input="getInfo" class="address">
+      <div class="city-item" v-for="(item,index) in citys" :key="index" @click="back(item.name)">
+        <div class="info">
+          <p class="name">{{item.name}}</p>
+          <p class="city">{{item.address}}</p>
         </div>
-      </router-link>
+        <div class="distance">
+          {{item.distance}}
+        </div>
+      </div>
     </Address>
   </div>
 </template>
@@ -24,38 +22,15 @@
 <script>
 import { Header, Cell } from "mint-ui";
 import Address from "../components/Address.vue";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
+import { SET_LOCATION_DETAIL } from '../stores/modules/base/mution-types.js'
 export default {
   name: "SelectAddress",
   computed: {
     ...mapState({
-      city: state => state.base.city,
-      lng: state => state.base.lng,
-      lat: state => state.base.lat
+      location: state => state.base.location,
+      locationDetail: state => state.base.locationDetail
     })
-  },
-  created() {
-    var vm = this;
-    var map = new BMap.Map();
-    var mPoint = new BMap.Point(vm.lng, vm.lat);
-
-    var local = new BMap.LocalSearch(mPoint, {
-      onSearchComplete: function(results) {
-        if (local.getStatus() == BMAP_STATUS_SUCCESS) {
-          var s = [];
-          for (var i = 0; i < results.getCurrentNumPois(); i++) {
-            var current = results.getPoi(i);
-            s.push({
-              title: current.title,
-              address: current.address,
-              distince: map.getDistance(current.point, mPoint)
-            });
-          }
-          vm.citys = s;
-        }
-      }
-    });
-    local.search("美食", { forceLocal: true });
   },
   data() {
     return {
@@ -64,6 +39,23 @@ export default {
   },
   components: {
     Address
+  },
+  methods: {
+    ...mapMutations([SET_LOCATION_DETAIL]),
+    getInfo(value) {
+      $.get(
+        `/api/restapi/bgs/poi/search_poi_nearby_alipay?keyword=${value}&offset=0&limit=20&latitude=${
+          this.location.latitude
+        }&longitude=${this.location.longitude}`
+      ).done(res => {
+        this.citys = res;
+      });
+    },
+    back(name){
+      this.locationDetail.name = name;
+      this[SET_LOCATION_DETAIL](this.locationDetail);
+      this.$router.push("/");
+    }
   }
 };
 </script>

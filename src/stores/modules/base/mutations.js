@@ -1,14 +1,15 @@
 import {
     SET_LOCATION,
-    SET_CITY
+    SET_LOCATION_DETAIL
 } from './mution-types'
 
 export default {
-    [SET_CITY](state, city) {
-        state.city = city;
+    [SET_LOCATION](state, location) {
+        localStorage.setItem('location', JSON.stringify(location));
+        state.location = location;
     },
-    [SET_LOCATION](state, point) {
-        state.lng = point.lng;
-        state.lat = point.lat;
+    [SET_LOCATION_DETAIL](state, locationDetail) {
+        localStorage.setItem('locationDetail', JSON.stringify(locationDetail));
+        state.locationDetail = locationDetail;
     }
 }

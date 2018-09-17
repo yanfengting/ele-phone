@@ -32,8 +32,8 @@ export default new Router({
       component: Mine
     },
     {
-      path: '/address',
-      name: 'address',
+      path: '/selecteAddress',
+      name: 'selecteAddress',
       component: SelectAddress
     }
   ]

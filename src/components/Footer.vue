@@ -30,7 +30,7 @@ export default {
       }
     };
   },
-  mounted(){
+  created(){
     this.selected = localStorage.getItem('selected') || "home";
   },
   watch: {
