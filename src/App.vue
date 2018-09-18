@@ -78,4 +78,24 @@ a {
 .city .mint-indexlist-navlist li{
   color: #999;
 }
+
+.swiper .mint-swipe-indicator.is-active {
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.swiper .mint-swipe-indicators {
+  position: absolute;
+  bottom: 0;
+}
+
+.swiper .mint-swipe-indicator {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  opacity: 0.2;
+  margin: 0 3px;
+}
 </style>

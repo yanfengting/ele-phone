@@ -6,6 +6,7 @@ import Order from './views/Order.vue'
 import Mine from './views/Mine.vue'
 import SelectAddress from './views/SelectAddress.vue'
 import SelectCity from './views/SelectCity.vue'
+import SearchProduct from './views/SearchProduct.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/selectCity',
       name: 'selectCity',
       component: SelectCity
+    },
+    {
+      path: '/searchProduct',
+      name: 'searchProduct',
+      component: SearchProduct
     }
   ]
 })
