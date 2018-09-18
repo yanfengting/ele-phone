@@ -4,6 +4,6 @@ function distance(value) {
     }
 }
 
-module.exports = {
+export default {
     distance
 }

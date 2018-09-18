@@ -1,12 +1,12 @@
 <template>
   <div class="select-address">
-    <mt-header title="请选择收货地址">
+    <mt-header title="请选择收货地址" fixed>
       <router-link to="/" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
     <Address :city="location.name" :result.sync="citys" @input="getInfo" class="address">
-      <div class="city-item" v-for="(item,index) in citys" :key="index" @click="back(item.name)">
+      <div class="city-item" v-for="(item,index) in citys" :key="index" @click="back(item.latitude, item.longitude)">
         <div class="info">
           <p class="name">{{item.name}}</p>
           <p class="city">{{item.address}}</p>
@@ -20,10 +20,9 @@
 </template>
 
 <script>
-import { Header, Cell } from "mint-ui";
 import Address from "../components/Address.vue";
 import { mapState, mapMutations } from "vuex";
-import { SET_LOCATION_DETAIL } from '../stores/modules/base/mution-types.js'
+import { SET_LOCATION_DETAIL } from "../stores/modules/base/mution-types.js";
 export default {
   name: "SelectAddress",
   computed: {
@@ -51,10 +50,13 @@ export default {
         this.citys = res;
       });
     },
-    back(name){
-      this.locationDetail.name = name;
-      this[SET_LOCATION_DETAIL](this.locationDetail);
-      this.$router.push("/");
+    back(lat, lng) {
+      $.get(
+        `/api/restapi/bgs/poi/reverse_geo_coding?latitude=${lat}&longitude=${lng}`
+      ).done(res => {
+        this[SET_LOCATION_DETAIL](res);
+        this.$router.push("/");
+      });
     }
   }
 };
@@ -62,7 +64,8 @@ export default {
 
 <style scoped>
 .address {
-  height: calc(100vh - 100px) !important;
+  margin-top: 40px;
+  height: calc(100vh - 110px) !important;
   background-color: #f4f4f4;
 }
 

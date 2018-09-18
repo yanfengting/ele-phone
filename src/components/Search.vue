@@ -1,13 +1,15 @@
 <template>
-  <div class="mint-search">
-    <div class="mint-searchbar">
-      <router-link to="/selectCity" class="city">
-        <span>{{city}}</span>
-        <i class="icon iconfont icon-jiantouarrow486"></i>
-      </router-link>
-      <div class="mint-searchbar-inner">
+  <div class="mint-search" style="margin-top: 40px;">
+    <div class="mint-searchbar" style="background-color: #26a2ff;justify-content: center;">
+      <div class="mint-searchbar-inner" style="border-radius: 20px;width: 80.5vw;flex:none; ">
         <i class="mintui mintui-search"></i>
-        <input ref="input" @click="visible = true" type="search" v-model="currentValue" :placeholder="placeholder" class="mint-searchbar-core">
+        <input
+        ref="input"
+        @click="visible = true"
+        type="search"
+        v-model="currentValue"
+        :placeholder="placeholder"
+        class="mint-searchbar-core" style="background-color:#fff !important;">
       </div>
     </div>
     <div class="mint-search-list" v-show="show || currentValue">
@@ -21,9 +23,9 @@
 </template>
 
 <script>
-import XCell from "mint-ui/packages/cell/index.js";
-if (process.env.NODE_ENV === "component") {
-  require("mint-ui/packages/cell/style.css");
+import XCell from 'mint-ui/packages/cell/index.js';
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/cell/style.css');
 }
 
 /**
@@ -45,35 +47,36 @@ if (process.env.NODE_ENV === "component") {
  * </mt-search>
  */
 export default {
-  name: "Address",
+  name: 'mt-search',
+
   data() {
     return {
       visible: false,
       currentValue: this.value
     };
   },
+
   components: { XCell },
+
   watch: {
     currentValue(val) {
-      this.$emit("input", val);
+      this.$emit('input', val);
     },
+
     value(val) {
       this.currentValue = val;
     }
   },
+
   props: {
-    city: {
-      type: String,
-      required: true
-    },
     value: String,
     autofocus: Boolean,
     show: Boolean,
     cancelText: {
-      default: "取消"
+      default: '取消'
     },
     placeholder: {
-      default: "搜索"
+      default: '搜索'
     },
     result: Array
   },
@@ -83,18 +86,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.city {
-  color: #000;
-  font-size: 14px;
-}
-.city span {
-  padding: 0 10px;
-}
-.city i {
-  padding-right: 10px;
-}
-</style>
-
-

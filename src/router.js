@@ -5,13 +5,13 @@ import Find from './views/Find.vue'
 import Order from './views/Order.vue'
 import Mine from './views/Mine.vue'
 import SelectAddress from './views/SelectAddress.vue'
+import SelectCity from './views/SelectCity.vue'
 
 Vue.use(Router)
 
 export default new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home
@@ -32,9 +32,14 @@ export default new Router({
       component: Mine
     },
     {
-      path: '/selecteAddress',
-      name: 'selecteAddress',
+      path: '/selectAddress',
+      name: 'selectAddress',
       component: SelectAddress
+    },
+    {
+      path: '/selectCity',
+      name: 'selectCity',
+      component: SelectCity
     }
   ]
 })

@@ -61,12 +61,21 @@ a {
   background-color: #fff !important;
 }
 
-.address .mint-search-list {
-  margin-top: 50px;
-}
-
 .address .mint-searchbar-inner,
 .mint-searchbar-inner input {
   background-color: #f2f2f2 !important;
+}
+
+.city .mint-indexlist-nav{
+  justify-content: flex-start;
+  border: none;
+}
+
+.city ul p {
+  font-weight: bold;
+}
+
+.city .mint-indexlist-navlist li{
+  color: #999;
 }
 </style>

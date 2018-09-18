@@ -1,13 +1,12 @@
 <template>
   <div class="home">
     <mt-header>
-      <router-link to="/selecteAddress" slot="left">
+      <router-link to="/selectAddress" slot="left">
         <i class="icon iconfont icon-location"></i>
         {{locationDetail.name}}
         <i class="icon iconfont icon-jiantouarrow486"></i>
       </router-link>
     </mt-header>
-
   </div>
 </template>
 
