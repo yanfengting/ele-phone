@@ -5,8 +5,8 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <Address :city="location.name" :result.sync="citys" @input="getInfo" class="address">
-      <div class="city-item" v-for="(item,index) in citys" :key="index" @click="back(item.latitude, item.longitude)">
+    <Address :city="location.name" :result.sync="cities" @input="getInfo" class="address">
+      <div class="city-item" v-for="(item,index) in cities" :key="index" @click="back(item.latitude, item.longitude)">
         <div class="info">
           <p class="name">{{item.name}}</p>
           <p class="city">{{item.address}}</p>
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      citys: []
+      cities: []
     };
   },
   components: {
@@ -47,7 +47,7 @@ export default {
           this.location.latitude
         }&longitude=${this.location.longitude}`
       ).done(res => {
-        this.citys = res;
+        this.cities = res;
       });
     },
     back(lat, lng) {

@@ -1,8 +1,8 @@
 <template>
   <div class="swiper">
-    <mt-swipe :auto="4000">
+    <mt-swipe :auto="4000" :show-indicators="swiper.length > 1">
       <mt-swipe-item v-for="(s,i) in swiper" :key="i">
-        <a href="javascript:void(0)" v-for="(item,i) in s" :key="i">
+        <a :href="utils.formatUrl(item.link)" v-for="(item,i) in s" :key="i">
           <div class="container">
             <img :src="utils.formatImagePath(item.image_hash)">
           </div>
@@ -26,6 +26,7 @@ export default {
   },
   computed: {
     ...mapState({
+      location: state => state.base.location,
       locationDetail: state => state.base.locationDetail
     })
   },
@@ -36,12 +37,12 @@ export default {
     // 类型和限量抢购数据
     getEntries() {
       var url = `/api/restapi/shopping/openapi/entries?latitude=${
-        this.locationDetail.latitude
+        this.location.latitude
       }&longitude=${
-        this.locationDetail.longitude
+        this.location.longitude
       }&templates[]=main_template&templates[]=favourable_template&templates[]=svip_template&terminal=h5`;
       $.get(url).done(res => {
-        this.swiper = utils.chunk(res[0].entries, 10)
+        this.swiper = utils.chunk(res[0].entries, 10);
       });
     }
   }

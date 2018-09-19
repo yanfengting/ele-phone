@@ -2,9 +2,11 @@
   <div class="home">
     <mt-header>
       <router-link to="/selectAddress" slot="left">
-        <i class="icon iconfont icon-location"></i>
-        <span style="font-weight:bold;">{{locationDetail.name}}</span>
-        <i class="icon iconfont icon-jiantouarrow486"></i>
+        <span class="address">
+          <i class="icon iconfont icon-location"></i>
+          {{locationDetail.name}}
+          <i class="icon iconfont icon-jiantouarrow486" style="font-size:12px;"></i>
+        </span>
       </router-link>
     </mt-header>
     <div class="searchbox">
@@ -32,11 +34,6 @@ export default {
   components: {
     Swiper
   },
-  data() {
-    return {
-      entries: []
-    };
-  },
   methods: {
     goSearchProduct() {
       this.$router.push("/searchProduct");
@@ -62,5 +59,17 @@ export default {
   text-align: center;
   font-size: 14px;
 }
-</style>
 
+.address {
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  padding-left: 5px;
+  max-width: 50vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30px;
+  line-height: 30px;
+}
+
+</style>

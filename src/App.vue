@@ -7,12 +7,21 @@
 
 <script>
 import Footer from "./components/Footer.vue";
-import { mapMutations } from "vuex";
-import { SET_LOCATION, SET_LOCATION_DETAIL } from "./stores/modules/base/mution-types";
+import { mapMutations, mapState } from "vuex";
+import {
+  SET_LOCATION,
+  SET_LOCATION_DETAIL
+} from "./stores/modules/base/mution-types";
 export default {
   name: "App",
   components: {
     Footer
+  },
+  computed: {
+    ...mapState({
+      location: state => state.base.location,
+      locationDetail: state => state.base.locationDetail
+    })
   },
   created() {
     this.geoLocation();
@@ -23,12 +32,26 @@ export default {
   methods: {
     ...mapMutations([SET_LOCATION, SET_LOCATION_DETAIL]),
     geoLocation() {
-      $.get("/api/restapi/shopping/v1/cities/guess").done(res => {
-        this[SET_LOCATION](res);
-        $.get(`/api/restapi/bgs/poi/reverse_geo_coding?latitude=${res.latitude}&longitude=${res.longitude}`).done((res)=>{
+      if (!this.location) {
+        $.get("/api/restapi/shopping/v1/cities/guess").done(res => {
+          this[SET_LOCATION](res);
+          $.get(
+            `/api/restapi/bgs/poi/reverse_geo_coding?latitude=${
+              res.latitude
+            }&longitude=${res.longitude}`
+          ).done(res => {
+            this[SET_LOCATION_DETAIL](res);
+          });
+        });
+      } else {
+        $.get(
+          `/api/restapi/bgs/poi/reverse_geo_coding?latitude=${
+            this.location.latitude
+          }&longitude=${this.location.longitude}`
+        ).done(res => {
           this[SET_LOCATION_DETAIL](res);
-        })
-      });
+        });
+      }
     }
   },
   beforeDestroy() {
@@ -66,7 +89,7 @@ a {
   background-color: #f2f2f2 !important;
 }
 
-.city .mint-indexlist-nav{
+.city .mint-indexlist-nav {
   justify-content: flex-start;
   border: none;
 }
@@ -75,7 +98,7 @@ a {
   font-weight: bold;
 }
 
-.city .mint-indexlist-navlist li{
+.city .mint-indexlist-navlist li {
   color: #999;
 }
 
