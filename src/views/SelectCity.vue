@@ -1,31 +1,29 @@
 <template>
-    <div class="city">
-        <mt-header title="城市选择" fixed>
-            <router-link to="/selectAddress" slot="left">
-                <mt-button icon="back"></mt-button>
-            </router-link>
-        </mt-header>
-        <Search :value="value" @input="input" placeholder="输入城市名称、拼音查询" show autofocus>
-            <mt-index-list style="margin-top:50px;" v-if="value==''">
-                <div class="current">
-                    <div class="title">当前定位城市</div>
-                    <div class="content">{{location.name}}</div>
-                </div>
-                <mt-index-section :index="cl.idx" v-for="(cl,i) in cityList" :key="i" style="justify-content: flex-start">
-                    <mt-cell :title="c.name" v-for="(c,i) in cl.cities" :key="i" @click.native="back(c)"></mt-cell>
-                </mt-index-section>
-            </mt-index-list>
-            <div style="margin-top:50px;" v-else>
-                <div class="name" v-for="(c,i) in cities" :key="i" @click="back(c)">{{c.name}}</div>
-            </div>
-        </Search>
-    </div>
+  <div class="city">
+    <mt-header title="城市选择" fixed>
+      <router-link to="/selectAddress" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
+    </mt-header>
+    <Search :value="value" @input="input" placeholder="输入城市名称、拼音查询" show autofocus>
+      <mt-index-list style="margin-top:50px;" v-if="value==''">
+        <div class="current">
+          <div class="title">当前定位城市</div>
+          <div class="content">{{location.name}}</div>
+        </div>
+        <mt-index-section :index="cl.idx" v-for="(cl,i) in cityList" :key="i" style="justify-content: flex-start">
+          <mt-cell :title="c.name" v-for="(c,i) in cl.cities" :key="i" @click.native="back(c)"></mt-cell>
+        </mt-index-section>
+      </mt-index-list>
+      <div style="margin-top:50px;" v-else>
+        <div class="name" v-for="(c,i) in cities" :key="i" @click="back(c)">{{c.name}}</div>
+      </div>
+    </Search>
+  </div>
 </template>
 
 <script>
 import Search from "../components/Search";
-import data from "../modules/data";
-import utils from "../modules/utils";
 import { mapState, mapMutations } from "vuex";
 import { SET_LOCATION } from "../stores/modules/base/mution-types";
 export default {
@@ -38,21 +36,37 @@ export default {
   data() {
     return {
       value: "",
-      cityList: JSON.parse(localStorage.getItem("cityList")) || data.cityList,
+      cityList: [],
       cities: []
     };
   },
   created() {
-    localStorage.setItem("cityList", JSON.stringify(data.cityList));
-    data.cityList.forEach(v => {
-      v.cities.forEach(v => {
-        this.cities.push(v);
-      });
-    });
-    localStorage.setItem("cities", JSON.stringify(this.cities));
+    this.initialData();
   },
   methods: {
     ...mapMutations([SET_LOCATION]),
+    initialData() {
+      var data = null;
+      if (localStorage.getItem("data") != "undefined") {
+        data = JSON.parse(localStorage.getItem("data"));
+      } else {
+        // 懒加载
+        data = require("../modules/data");
+      }
+      this.cityList = data.default.cityList;
+      localStorage.setItem("data", JSON.stringify(data));
+
+      if (localStorage.getItem("cities") != "undefined") {
+        this.cities = JSON.parse(localStorage.getItem("cities"));
+      } else {
+        this.cityList.forEach(v => {
+          v.cities.forEach(v => {
+            this.cities.push(v);
+          });
+        });
+        localStorage.setItem("cities", JSON.stringify(this.cities));
+      }
+    },
     input(value) {
       this.value = value;
       if (this.value) {
@@ -64,7 +78,7 @@ export default {
           );
         });
       } else {
-          this.cities = JSON.parse(localStorage.getItem('cities'));
+        this.cities = JSON.parse(localStorage.getItem("cities"));
       }
     },
     back(c) {
