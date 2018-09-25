@@ -53,6 +53,7 @@ export default {
         // 懒加载
         data = require("../modules/data");
       }
+      console.log(data)
       this.cityList = data.default.cityList;
       localStorage.setItem("data", JSON.stringify(data));
 
