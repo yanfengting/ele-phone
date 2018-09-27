@@ -5,7 +5,7 @@
         <span class="address">
           <i class="icon iconfont icon-location"></i>
           {{locationDetail.name}}
-          <i class="icon iconfont icon-jiantouarrow486" style="font-size:12px;"></i>
+          <i class="icon iconfont icon-jiantouarrow486" style="font-size:0.32rem;"></i>
         </span>
       </router-link>
     </mt-header>
@@ -281,38 +281,39 @@ export default {
 
 <style scoped>
 .searchbox {
-  margin-top: -1px;
-  padding: 10px 0;
+  margin-top: -0.026666rem;
+  padding: 0.266666rem 0;
   background-color: #26a2ff;
 }
 .content {
   width: 90%;
-  height: 35px;
-  line-height: 35px;
+  height: 0.933333rem;
+  line-height: 0.933333rem;
   margin: 0 auto;
   background-color: #fff;
   color: #999;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.373333rem;
 }
 
 .address {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 0.426666rem;
   display: inline-block;
-  padding-left: 5px;
+  padding-left: 0.133333rem;
   max-width: 50vw;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 30px;
-  line-height: 30px;
+  height: 0.8rem;
+  line-height: 0.8rem;
 }
 
 .shoplist-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20px;
+  height: 0.533333rem;
+  font-size: .4rem;
   color: #000;
 }
 
@@ -320,17 +321,17 @@ export default {
 .shoplist-title:before {
   display: block;
   content: "";
-  width: 20px;
-  height: 1px;
+  width: 0.533333rem;
+  height: 0.026666rem;
   background-color: #999;
 }
 
 .shoplist-title:before {
-  margin-right: 10px;
+  margin-right: 0.266666rem;
 }
 
 .shoplist-title:after {
-  margin-left: 10px;
+  margin-left: 0.266666rem;
 }
 
 .fixTop {
@@ -343,7 +344,7 @@ export default {
 
 .fixTopNav {
   position: fixed;
-  top: 54px;
+  top: 1.44rem;
   left: 0;
   width: 100vw;
   z-index: 100;
@@ -351,7 +352,7 @@ export default {
 
 .filter {
     position: relative;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0.026666rem solid #ddd;
     line-height: 10.4vw;
     z-index: 101;
     height: 10.666667vw
@@ -454,7 +455,7 @@ export default {
     left: 0;
     right: 0;
     top: 10.533333vw;
-    border-top: 1px solid #ddd;
+    border-top: 0.026666rem solid #ddd;
     position: absolute;
     max-height: 0;
     background-color: #fff;

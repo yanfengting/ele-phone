@@ -64,8 +64,8 @@ export default {
 
 <style scoped>
 .address {
-  margin-top: 40px;
-  height: calc(100vh - 110px) !important;
+  margin-top: 1.066666rem;
+  height: calc(100vh - 2.933333rem) !important;
   background-color: #f4f4f4;
 }
 
@@ -75,7 +75,7 @@ export default {
 }
 
 .city-item {
-  padding: 10px;
+  padding: 0.266666rem;
   display: flex;
   justify-content: space-between;
 }
@@ -89,7 +89,7 @@ export default {
 }
 
 .city-item .city {
-  font-size: 12px;
+  font-size: 0.32rem;
 }
 </style>
 

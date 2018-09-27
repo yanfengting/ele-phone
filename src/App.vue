@@ -62,6 +62,9 @@ export default {
 
 <style lang="scss">
 @import "./assets/icons/iconfont.css";
+html {
+  font-size: 37.5px;
+}
 body {
   margin: 0;
   padding: 0;
@@ -113,12 +116,12 @@ a {
 }
 
 .swiper .mint-swipe-indicator {
-  width: 8px;
-  height: 8px;
+  width: 0.213333rem;
+  height: 0.213333rem;
   display: inline-block;
   border-radius: 100%;
   background: #000;
   opacity: 0.2;
-  margin: 0 3px;
+  margin: 0 0.08rem;
 }
 </style>

@@ -50,7 +50,7 @@
         <section class="index-tagLine">
           <span class="mini-tag-tag index-tag">
             <span class="index-tag-ghost" v-for="(t,i) in item.support_tags" :key="i" v-if="t.type"
-            :style="{border: '1px solid #' + t.border, color: '#' + t.color}">{{t.text}}</span>
+            :style="{border: '0.026666rem solid #' + t.border, color: '#' + t.color}">{{t.text}}</span>
           </span> 
           <span class="index-recommend-tag">
             <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?"> 
@@ -187,8 +187,8 @@ export default {
 
 .shopinfo .main .line2 .shopname .premium {
   position: relative;
-  /* margin-right: 1.333333vw;
-  padding: 0.266667vw 0.666667vw; */
+  margin-right: 1.333333vw;
+  padding: 0.266667vw 0.666667vw;
   color: transparent;
   text-align: center;
   white-space: nowrap;
@@ -205,12 +205,10 @@ export default {
   top: 0;
   z-index: 0;
   content: attr(content);
-  /* padding: 0.533333vw 1.333333vw; */
   padding: 1.333333vw 1.333333vw;
   color: #6f3f15;
   font-weight: 700;
-  /* font-size: 0.586667rem; */
-  font-size: 1rem;
+  font-size: 0.586667rem;
   border-radius: 1.066667vw;
   background-image: linear-gradient(-139deg, #fff100, #ffe339);
   white-space: nowrap;
@@ -391,9 +389,7 @@ img {
 
 .activity .dashedline {
   width: 100%;
-  /* height: 0.133333vw; */
-  height: 2px;
-  /* padding-right: 2.666667vw; */
+  height: 0.133333vw;
 }
 
 .activity .activities {

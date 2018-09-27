@@ -87,13 +87,13 @@ export default {
 <style scoped>
 .city {
   color: #000;
-  font-size: 14px;
+  font-size: 0.373333rem;
 }
 .city span {
-  padding: 0 10px;
+  padding: 0 0.266666rem;
 }
 .city i {
-  padding-right: 10px;
+  padding-right: 0.266666rem;
 }
 </style>
 

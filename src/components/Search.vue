@@ -1,7 +1,7 @@
 <template>
-  <div class="mint-search" style="margin-top: 40px;">
+  <div class="mint-search" style="margin-top: 1.066666rem;">
     <div class="mint-searchbar" style="background-color: #26a2ff;justify-content: center;">
-      <div class="mint-searchbar-inner" style="border-radius: 20px;width: 80.5vw;flex:none; ">
+      <div class="mint-searchbar-inner" style="border-radius: 0.533333rem;width: 80.5vw;flex:none; ">
         <i class="mintui mintui-search"></i>
         <input
         ref="input"

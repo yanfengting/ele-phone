@@ -6,7 +6,7 @@
       </router-link>
     </mt-header>
     <Search :value="value" @input="input" placeholder="输入城市名称、拼音查询" show autofocus>
-      <mt-index-list style="margin-top:50px;" v-if="value==''">
+      <mt-index-list style="margin-top: 1.333333rem;" v-if="value==''">
         <div class="current">
           <div class="title">当前定位城市</div>
           <div class="content">{{location.name}}</div>
@@ -15,7 +15,7 @@
           <mt-cell :title="c.name" v-for="(c,i) in cl.cities" :key="i" @click.native="back(c)"></mt-cell>
         </mt-index-section>
       </mt-index-list>
-      <div style="margin-top:50px;" v-else>
+      <div style="margin-top: 1.333333rem;" v-else>
         <div class="name" v-for="(c,i) in cities" :key="i" @click="back(c)">{{c.name}}</div>
       </div>
     </Search>
@@ -102,15 +102,15 @@ export default {
 <style scoped>
 .current .title,
 .current .content {
-  padding: 10px 0 10px 10px;
+  padding: 0.266666rem 0 0.266666rem 0.266666rem;
 }
 .current .title {
   background-color: #fafafa;
 }
 .name {
-  margin-left: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  margin-left: 0.266666rem;
+  padding: 0.266666rem 0;
+  border-bottom: 0.026666rem solid #ddd;
 }
 </style>
 
