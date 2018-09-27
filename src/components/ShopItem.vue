@@ -24,12 +24,7 @@
         <section class="line2">
           <div class="rate">
             <div class="rating">
-              <div class="gray">
-
-              </div>
-              <div class="actived">
-
-              </div>
+              <el-rate v-model="item.rating" allow-half disabled></el-rate>
             </div>
             <span class="rate">{{item.rating}}</span>
             <span>月售{{item.recent_order_num}}单</span>
@@ -476,7 +471,5 @@ img {
 .show {
   display: block !important;
 }
-
-
 </style>
 

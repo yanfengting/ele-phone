@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "prod":"vue-cli-service serve --open --mode=production",
-    "uat": "vue-cli-service serve --open --mode=test" ,
+    "prod": "vue-cli-service serve --open --mode=production",
+    "uat": "vue-cli-service serve --open --mode=test",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "element-ui": "^2.4.7",
     "mint-ui": "^2.2.13",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",

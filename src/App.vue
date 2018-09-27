@@ -124,4 +124,9 @@ a {
   opacity: 0.2;
   margin: 0 0.08rem;
 }
+
+.shoplist .el-rate__icon {
+    font-size: 0.32rem !important;
+    margin-right: 0 !important;
+}
 </style>
