@@ -129,4 +129,8 @@ a {
     font-size: 0.32rem !important;
     margin-right: 0 !important;
 }
+
+.city .mint-search-list, .city .mint-cell-wrapper{
+  font-size: .373333rem;
+}
 </style>

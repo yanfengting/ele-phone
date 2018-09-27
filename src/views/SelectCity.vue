@@ -11,7 +11,7 @@
           <div class="title">当前定位城市</div>
           <div class="content">{{location.name}}</div>
         </div>
-        <mt-index-section :index="cl.idx" v-for="(cl,i) in cityList" :key="i" style="justify-content: flex-start">
+        <mt-index-section :index="cl.idx" v-for="(cl,i) in cityList" :key="i" style="justify-content: flex-start;">
           <mt-cell :title="c.name" v-for="(c,i) in cl.cities" :key="i" @click.native="back(c)"></mt-cell>
         </mt-index-section>
       </mt-index-list>
@@ -103,15 +103,21 @@ export default {
 .current .title,
 .current .content {
   padding: 0.266666rem 0 0.266666rem 0.266666rem;
+  
 }
 .current .title {
   background-color: #fafafa;
+  font-size: 0.48rem;
+}
+.current .content, .city .name {
+  font-size: .373333rem;
 }
 .name {
   margin-left: 0.266666rem;
   padding: 0.266666rem 0;
   border-bottom: 0.026666rem solid #ddd;
 }
+
 </style>
 
 

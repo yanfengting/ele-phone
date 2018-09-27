@@ -78,6 +78,7 @@ export default {
   padding: 0.266666rem;
   display: flex;
   justify-content: space-between;
+  font-size: .32rem;
 }
 
 .city-item .info p {
@@ -86,10 +87,7 @@ export default {
 
 .city-item .name {
   font-weight: 700;
-}
-
-.city-item .city {
-  font-size: 0.32rem;
+  font-size: 0.4rem;
 }
 </style>
 

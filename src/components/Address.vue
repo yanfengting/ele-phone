@@ -10,7 +10,7 @@
         <input ref="input" @click="visible = true" type="search" v-model="currentValue" :placeholder="placeholder" class="mint-searchbar-core">
       </div>
     </div>
-    <div class="mint-search-list" v-show="show || currentValue">
+    <div class="mint-search-list" v-show="show || currentValue" style="padding-top: 2.133333rem;">
       <div class="mint-search-list-warp">
         <slot>
           <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
